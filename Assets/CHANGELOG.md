@@ -10,3 +10,5 @@
   - LocalPositionTweener - to animate Transform's local position;
   - LocalRotationTweener - to animate Transform's local rotation;
   - ScaleTweener - to animate Transform's local scale.
+## [1.0.1] 2024-07-05
+### Updated manifest

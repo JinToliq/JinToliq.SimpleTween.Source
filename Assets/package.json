@@ -5,9 +5,9 @@
   "description": "",
   "unity": "2023.2",
   "unityRelease": "3f1",
-  "documentationUrl": "https://github.com/JinToliq/JinToliq.SimpleTween/blob/main/Documentation/SimpleTween.md",
-  "changelogUrl": "https://github.com/JinToliq/JinToliq.SimpleTween",
-  "licensesUrl": "https://github.com/JinToliq/JinToliq.SimpleTween",
+  "documentationUrl": "https://github.com/JinToliq/JinToliq.SimpleTween.Package/blob/main/Documentation/SimpleTween.md",
+  "changelogUrl": "https://github.com/JinToliq/JinToliq.SimpleTween.Package/blob/main/CHANGELOG.md",
+  "licensesUrl": "https://github.com/JinToliq/JinToliq.SimpleTween.Package/blob/main/LICENSE.md",
   "keywords": [
     "tween",
     "simple",
@@ -22,6 +22,6 @@
   "author": {
     "name": "JinToliq",
     "email": "a.homeliev@gmail.com",
-    "url": "https://github.com/JinToliq/JinToliq.SimpleTween"
+    "url": "https://github.com/JinToliq/JinToliq.SimpleTween.Package.git"
   }
 }
