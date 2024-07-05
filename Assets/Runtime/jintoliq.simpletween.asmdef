@@ -1,0 +1,14 @@
+{
+    "name": "jintoliq.simpletween",
+    "rootNamespace": "JinToliq.SimpleTween",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

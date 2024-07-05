@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Simple.Tween
+namespace JinToliq.SimpleTween
 {
   public class ColorTweener : AnimationCurveTweener<Graphic>
   {

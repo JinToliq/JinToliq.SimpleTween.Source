@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Simple.Tween
+namespace JinToliq.SimpleTween
 {
   public abstract class TargetTweener<T> : Tweener where T : Component
   {

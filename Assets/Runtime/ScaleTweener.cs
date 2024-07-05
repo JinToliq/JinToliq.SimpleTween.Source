@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Simple.Tween
+namespace JinToliq.SimpleTween
 {
   public class ScaleTweener : AnimationCurveTweener<Transform>
   {

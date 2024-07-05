@@ -1,0 +1,27 @@
+{
+  "name": "com.jintoliq.simpletween",
+  "version": "1.0.0",
+  "displayName": "SimpleTween",
+  "description": "",
+  "unity": "2023.2",
+  "unityRelease": "3f1",
+  "documentationUrl": "https://github.com/JinToliq/Unity.Simple.Tween.git",
+  "changelogUrl": "https://github.com/JinToliq/Unity.Simple.Tween.git",
+  "licensesUrl": "https://github.com/JinToliq/Unity.Simple.Tween.git",
+  "keywords": [
+    "tween",
+    "simple",
+    "ease",
+    "simpletween",
+    "easing",
+    "tweener",
+    "tweening",
+    "2d",
+    "animation"
+  ],
+  "author": {
+    "name": "JinToliq",
+    "email": "a.homeliev@gmail.com",
+    "url": "https://github.com/JinToliq/Unity.Simple.Tween.git"
+  }
+}

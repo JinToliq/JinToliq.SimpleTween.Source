@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Simple.Tween
+namespace JinToliq.SimpleTween
 {
   public abstract class AnimationCurveTweener<T> : TargetTweener<T> where T : Component
   {

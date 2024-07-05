@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Simple.Tween
+namespace JinToliq.SimpleTween
 {
   public enum PlayMode
   {
