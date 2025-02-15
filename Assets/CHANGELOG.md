@@ -12,3 +12,5 @@
   - ScaleTweener - to animate Transform's local scale.
 ## [1.0.1] 2024-07-05
 ### Updated manifest
+## [1.1.0] 2025-02-15
+### Added option to specify if tween should be performed using DeltaTime or Unscaled DeltaTime. Also added MultipleSpriteRendererColorTweener

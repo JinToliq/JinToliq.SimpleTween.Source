@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace JinToliq.SimpleTween
 {
@@ -6,9 +7,19 @@ namespace JinToliq.SimpleTween
   {
     public T Target;
 
-    private void Awake()
+    protected virtual void Awake() => Target ??= GetComponent<T>();
+  }
+
+  public abstract class MultipleTargetTweener<T> : Tweener where T : Component
+  {
+    public T[] Target;
+
+    protected virtual void Awake() => Target ??= GetComponents<T>();
+
+    protected void ForEach<TArg>(Action<T, TArg> action, TArg arg)
     {
-      Target ??= GetComponent<T>();
+      foreach (var item in Target)
+        action(item, arg);
     }
   }
 }

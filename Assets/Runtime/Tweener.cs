@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace JinToliq.SimpleTween
@@ -11,30 +12,37 @@ namespace JinToliq.SimpleTween
     OnEnable = 2,
   }
 
+  public enum UpdateMode
+  {
+    DeltaTime = 0,
+    UnscaledDeltaTime = 1,
+  }
+
   public abstract class Tweener : MonoBehaviour
   {
     public event Action Complete;
     public event Action ReverseComplete;
 
     [SerializeField] private PlayMode _mode;
+    [SerializeField] private UpdateMode _update;
     [SerializeField] private bool _resetOnDisable;
     [SerializeField] private bool _loop;
     public float Duration;
     private Coroutine _routine;
 
-    private void Start()
+    protected virtual void Start()
     {
       if (_mode == PlayMode.OnStart)
         Play();
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
       if (_mode == PlayMode.OnEnable)
         Play();
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
       if (_resetOnDisable)
         Tween(0);
@@ -76,7 +84,7 @@ namespace JinToliq.SimpleTween
       OnBeforePlay();
       Tween(0);
       var time = 0f;
-      while ((time += Time.deltaTime) < Duration)
+      while ((time += GetDeltaTime()) < Duration)
       {
         Tween(time / Duration);
         yield return null;
@@ -101,7 +109,7 @@ namespace JinToliq.SimpleTween
       OnBeforePlay();
       Tween(1);
       var time = Duration;
-      while ((time -= Time.deltaTime) > 0)
+      while ((time -= GetDeltaTime()) > 0)
       {
         Tween(time / Duration);
         yield return null;
@@ -122,5 +130,8 @@ namespace JinToliq.SimpleTween
         _routine = null;
       }
     }
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    private float GetDeltaTime() => _update is UpdateMode.DeltaTime ? Time.deltaTime : Time.unscaledDeltaTime;
   }
 }
