@@ -14,3 +14,5 @@
 ### Updated manifest
 ## [1.1.0] 2025-02-15
 ### Added option to specify if tween should be performed using DeltaTime or Unscaled DeltaTime. Also added MultipleSpriteRendererColorTweener
+## [1.2.0] 2025-03-13
+### Added CompositeTweener wrapper to allow multiple tweeners to be played simultaneously more easily
