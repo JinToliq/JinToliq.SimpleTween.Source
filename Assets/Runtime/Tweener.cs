@@ -50,20 +50,20 @@ namespace JinToliq.SimpleTween
 
     public void SetTweenPosition(float value) => Tween(value);
 
-    public void Play(Action onComplete = null)
+    public void Play(float speed = 1f, Action onComplete = null)
     {
       if (_routine != null)
         StopCoroutine(_routine);
 
-      _routine = StartCoroutine(Routine(onComplete));
+      _routine = StartCoroutine(Routine(speed, false, Complete, onComplete));
     }
 
-    public void PlayReverse(Action onComplete = null)
+    public void PlayReverse(float speed = 1f, Action onComplete = null)
     {
       if (_routine != null)
         StopCoroutine(_routine);
 
-      _routine = StartCoroutine(ReverseRoutine(onComplete));
+      _routine = StartCoroutine(Routine(speed, true, ReverseComplete, onComplete));
     }
 
     public void Stop(bool reset)
@@ -79,51 +79,23 @@ namespace JinToliq.SimpleTween
 
     protected abstract void Tween(float factor);
 
-    private IEnumerator Routine(Action onComplete = null)
+    private IEnumerator Routine(float speed, bool isReverse, Action onCompleteEvent = null, Action onComplete = null)
     {
       OnBeforePlay();
-      Tween(0);
-      var time = 0f;
-      while ((time += GetDeltaTime()) < Duration)
+      var realDuration = Duration / speed;
+      foreach (var time in isReverse ? CoroutineTimeline.DoLinearReverse(realDuration) : CoroutineTimeline.DoLinear(realDuration))
       {
-        Tween(time / Duration);
+        Tween(time);
         yield return null;
       }
-      Tween(1);
-      Complete?.Invoke();
+
+      onCompleteEvent?.Invoke();
       onComplete?.Invoke();
 
       if (_loop)
       {
         yield return null;
-        _routine = StartCoroutine(Routine(onComplete));
-      }
-      else
-      {
-        _routine = null;
-      }
-    }
-
-    private IEnumerator ReverseRoutine(Action onComplete = null)
-    {
-      OnBeforePlay();
-      Tween(1);
-      var time = Duration;
-      while ((time -= GetDeltaTime()) > 0)
-      {
-        Tween(time / Duration);
-        yield return null;
-      }
-
-      Tween(0);
-      ReverseComplete?.Invoke();
-      onComplete?.Invoke();
-      _routine = null;
-
-      if (_loop)
-      {
-        yield return null;
-        _routine = StartCoroutine(ReverseRoutine(onComplete));
+        _routine = StartCoroutine(Routine(speed, isReverse, onCompleteEvent, onComplete));
       }
       else
       {

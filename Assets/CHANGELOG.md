@@ -15,4 +15,6 @@
 ## [1.1.0] 2025-02-15
 ### Added option to specify if tween should be performed using DeltaTime or Unscaled DeltaTime. Also added MultipleSpriteRendererColorTweener
 ## [1.2.0] 2025-03-13
-### Added CompositeTweener wrapper to allow multiple tweeners to be played simultaneously more easily
+### Added CompositeTweener wrapper to allow multiple Tweeners to be played simultaneously more easily
+## [1.3.0] 2025-06-14
+### Added speed parameter for OnDemand Tweeners. Added Stop to CompositeTweener

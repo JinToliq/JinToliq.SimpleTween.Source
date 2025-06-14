@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace JinToliq.SimpleTween
 {
-  public struct CompositeTweener
+  public readonly struct CompositeTweener
   {
     private readonly IReadOnlyList<Tweener> _tweeners;
     private readonly Tweener _longest;
@@ -24,7 +24,7 @@ namespace JinToliq.SimpleTween
       }
     }
 
-    public void Play(Action onComplete)
+    public void Play(Action onComplete, float speed = 1f)
     {
       if (_tweeners.Count == 0)
       {
@@ -35,13 +35,13 @@ namespace JinToliq.SimpleTween
       foreach (var item in _tweeners)
       {
         if (item == _longest)
-          item.Play(onComplete);
+          item.Play(speed, onComplete);
         else
-          item.Play();
+          item.Play(speed);
       }
     }
 
-    public void PlayReverse(Action onComplete)
+    public void PlayReverse(Action onComplete, float speed = 1f)
     {
       if (_tweeners.Count == 0)
       {
@@ -52,10 +52,19 @@ namespace JinToliq.SimpleTween
       foreach (var item in _tweeners)
       {
         if (item == _longest)
-          item.PlayReverse(onComplete);
+          item.PlayReverse(speed, onComplete);
         else
-          item.PlayReverse();
+          item.PlayReverse(speed);
       }
+    }
+
+    public void Stop(bool reset)
+    {
+      if (_tweeners.Count == 0)
+        return;
+
+      foreach (var tweener in _tweeners)
+        tweener.Stop(reset);
     }
   }
 }
